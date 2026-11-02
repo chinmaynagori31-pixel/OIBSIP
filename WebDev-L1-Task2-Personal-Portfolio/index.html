@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinmay Nagori | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="logo">Chinmay<span>.</span></div>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, I'm</h3>
+            <h1>Chinmay Nagori</h1>
+            <p>A passionate <span>Web Developer</span> & Student at Mohanlal Sukhadia University, dedicated to building responsive, modern, and user-friendly web applications.</p>
+            <div class="social-icons">
+                <a href="https://github.com/chinmaynagori31-pixel" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/chinmay-nagori" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="btn-group">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#projects" class="btn btn-outline">View Projects</a>
+            </div>
+        </div>
+        <div class="home-img">
+            <div class="img-box">
+                <img src="profile.jpg" alt="Chinmay Nagori Profile">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Aspiring Web Developer & Tech Enthusiast</h3>
+                <p>I am a student at <strong>Mohanlal Sukhadia University, Udaipur</strong>, residing in Chittorgarh, Rajasthan. I have a strong passion for web development and software technologies.</p>
+                <p>I focus on creating clean, intuitive, and efficient code with standard responsive styling using HTML5, CSS3, and JavaScript.</p>
+                <div class="info-list">
+                    <div><span>Location:</span> Chittorgarh, Rajasthan, India</div>
+                    <div><span>Education:</span> Mohanlal Sukhadia University</div>
+                    <div><span>Internship:</span> Oasis Infobyte Web Development</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="heading">My <span>Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5</h3>
+                <p>Semantic markup, structure, and accessibility standards.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS3</h3>
+                <p>Flexbox, Grid layout, Responsive design, and modern animations.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>DOM Manipulation, ES6+ features, and dynamic Web APIs.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-git-alt"></i>
+                <h3>Git & GitHub</h3>
+                <p>Version control, repository management, and deployment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <i class="fas fa-motorcycle project-icon"></i>
+                    <h3>Landing Page Demo</h3>
+                    <p>A clean, fully responsive landing page developed as part of Web Development Internship tasks.</p>
+                    <div class="tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                    </div>
+                    <a href="https://github.com/chinmaynagori31-pixel" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <i class="fas fa-user-tie project-icon"></i>
+                    <h3>Personal Portfolio</h3>
+                    <p>Interactive portfolio website featuring modern UI design, dark aesthetics, and clear layout sections.</p>
+                    <div class="tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="https://github.com/chinmaynagori31-pixel" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Get In <span>Touch</span></h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <div class="c-detail"><i class="fas fa-user"></i> Chinmay Nagori</div>
+                <div class="c-detail"><i class="fas fa-map-marker-alt"></i> Chittorgarh, Rajasthan</div>
+                <div class="c-detail"><i class="fab fa-github"></i> chinmaynagori31-pixel</div>
+                <div class="c-detail"><i class="fab fa-linkedin"></i> linkedin.com/in/chinmay-nagori</div>
+            </div>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Chinmay Nagori. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
