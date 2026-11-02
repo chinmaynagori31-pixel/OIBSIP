@@ -1,477 +1,157 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AURA Motors - Hyper Edition</title>
-  <!-- Google Fonts: Montserrat & Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    /* CSS Reset & Variable Setup */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg-main: #0b0c10;
-      --bg-card: #1f2833;
-      --accent-color: #ff3333;
-      --accent-hover: #cc0000;
-      --text-main: #ffffff;
-      --text-muted: #c5c6c7;
-      --font-heading: 'Montserrat', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      font-size: 16px;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* 1. Sticky Navigation Bar */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: rgba(11, 12, 16, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: var(--text-main);
-    }
-
-    .logo span {
-      color: var(--accent-color);
-    }
-
-    nav {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .nav-link {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      transition: color 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .nav-link:hover {
-      color: var(--accent-color);
-    }
-
-    /* 2. Hero Section */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 4rem 2rem;
-      background: radial-gradient(circle at center, #1f2833 0%, #0b0c10 70%);
-      position: relative;
-    }
-
-    .hero-tag {
-      color: var(--accent-color);
-      font-family: var(--font-heading);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--text-muted);
-      max-width: 650px;
-      margin-bottom: 2.5rem;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      background-color: var(--accent-color);
-      color: var(--text-main);
-      padding: 1rem 2.5rem;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .cta-btn:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    .hero-image-container {
-      margin-top: 3rem;
-      width: 100%;
-      max-width: 900px;
-    }
-
-    .hero-image-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    }
-
-    /* Common Section Styling */
-    section {
-      padding: 5rem 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .section-title span {
-      color: var(--accent-color);
-    }
-
-    /* 3. Section 1: Specifications / Features */
-    .specs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .spec-card {
-      background-color: var(--bg-card);
-      padding: 2.5rem 1.5rem;
-      border-radius: 8px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .spec-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .spec-value {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--accent-color);
-      margin-bottom: 0.5rem;
-    }
-
-    .spec-label {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .spec-desc {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* 4. Section 2: Overview / About */
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-content {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .about-content h3 {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .about-content p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-image {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .about-image img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    /* 5. Section 3: Testimonials */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .testimonial-card {
-      background-color: var(--bg-card);
-      padding: 2rem;
-      border-radius: 8px;
-      border-left: 4px solid var(--accent-color);
-    }
-
-    .testimonial-quote {
-      font-style: italic;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .testimonial-author {
-      font-family: var(--font-heading);
-      font-weight: 700;
-    }
-
-    .testimonial-role {
-      font-size: 0.85rem;
-      color: var(--accent-color);
-    }
-
-    /* 6. Footer */
-    footer {
-      background-color: #050608;
-      padding: 3rem 5% 1.5rem 5%;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-info h4 {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-info p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .footer-links h5 {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-color);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    /* Responsive Design Adjustments */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      nav {
-        gap: 1.2rem;
-      }
-
-      section {
-        padding: 3.5rem 5%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinmay Nagori | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Sticky Navbar -->
-  <header>
-    <div class="logo">AURA<span>MOTORS</span></div>
-    <nav>
-      <a href="#overview" class="nav-link">Overview</a>
-      <a href="#specs" class="nav-link">Specs</a>
-      <a href="#reviews" class="nav-link">Reviews</a>
-    </nav>
-  </header>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="logo">Chinmay<span>.</span></div>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <p class="hero-tag">The Ultimate Hypercar</p>
-    <h1 class="hero-title">AURA HYPER-GT</h1>
-    <p class="hero-subtitle">Engineering perfection meets raw electric power. Experience the next era of high-performance automotive craftsmanship.</p>
-    <a href="#specs" class="cta-btn">Book Test Drive</a>
-    
-    <div class="hero-image-container">
-      <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" alt="AURA Hyper-GT Sports Car">
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, I'm</h3>
+            <h1>Chinmay Nagori</h1>
+            <p>A passionate <span>Web Developer</span> & Student at Mohanlal Sukhadia University, dedicated to building responsive, modern, and user-friendly web applications.</p>
+            <div class="social-icons">
+                <a href="https://github.com/chinmaynagori31-pixel" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/chinmay-nagori" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="btn-group">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#projects" class="btn btn-outline">View Projects</a>
+            </div>
+        </div>
+        <div class="home-img">
+            <div class="img-box">
+                <img src="profile.jpg" alt="Chinmay Nagori Profile">
+            </div>
+        </div>
+    </section>
 
-  <!-- Section 1: Specifications -->
-  <section id="specs">
-    <h2 class="section-title">Performance <span>Specs</span></h2>
-    <div class="specs-grid">
-      <div class="spec-card">
-        <div class="spec-value">1.9s</div>
-        <div class="spec-label">0-100 km/h</div>
-        <div class="spec-desc">Instantaneous acceleration with quad-motor drive.</div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-value">1,020 HP</div>
-        <div class="spec-label">Peak Horsepower</div>
-        <div class="spec-desc">Unmatched track-ready performance output.</div>
-      </div>
-      <div class="spec-card">
-        <div class="spec-value">650 km</div>
-        <div class="spec-label">Battery Range</div>
-        <div class="spec-desc">Extended range with ultra-fast charging capabilities.</div>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Aspiring Web Developer & Tech Enthusiast</h3>
+                <p>I am a student at <strong>Mohanlal Sukhadia University, Udaipur</strong>, residing in Chittorgarh, Rajasthan. I have a strong passion for web development and software technologies.</p>
+                <p>I focus on creating clean, intuitive, and efficient code with standard responsive styling using HTML5, CSS3, and JavaScript.</p>
+                <div class="info-list">
+                    <div><span>Location:</span> Chittorgarh, Rajasthan, India</div>
+                    <div><span>Education:</span> Mohanlal Sukhadia University</div>
+                    <div><span>Internship:</span> Oasis Infobyte Web Development</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Section 2: Overview / About -->
-  <section id="overview">
-    <h2 class="section-title">Design & <span>Craftsmanship</span></h2>
-    <div class="about-container">
-      <div class="about-content">
-        <h3>Aerodynamics Redefined</h3>
-        <p">Every curve and carbon-fiber element of the AURA GT is sculpted to optimize airflow, increase downforce, and ensure absolute stability at extreme speeds.</p>
-        <p>Inside, bespoke leather seating meets cut-edge digital displays, offering complete control without sacrificing true luxury.</p>
-        <a href="#specs" class="cta-btn" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">Explore Features</a>
-      </div>
-      <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Car Interior Detail">
-      </div>
-    </div>
-  </section>
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="heading">My <span>Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5</h3>
+                <p>Semantic markup, structure, and accessibility standards.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS3</h3>
+                <p>Flexbox, Grid layout, Responsive design, and modern animations.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>DOM Manipulation, ES6+ features, and dynamic Web APIs.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-git-alt"></i>
+                <h3>Git & GitHub</h3>
+                <p>Version control, repository management, and deployment.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Section 3: Testimonials -->
-  <section id="reviews">
-    <h2 class="section-title">Driver <span>Reviews</span></h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <p class="testimonial-quote">"The power delivery is unlike anything I've ever experienced. It sets a new benchmark for sports cars."</p>
-        <div class="testimonial-author">Alex Rivera</div>
-        <div class="testimonial-role">Automotive Journalist</div>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-quote">"Absolute precision handling combined with pure electric speed. It's a masterpiece on both track and highway."</p>
-        <div class="testimonial-author">Sophia Zhang</div>
-        <div class="testimonial-role">Professional Driver</div>
-      </div>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <i class="fas fa-motorcycle project-icon"></i>
+                    <h3>Landing Page Demo</h3>
+                    <p>A clean, fully responsive landing page developed as part of Web Development Internship tasks.</p>
+                    <div class="tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                    </div>
+                    <a href="https://github.com/chinmaynagori31-pixel" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <i class="fas fa-user-tie project-icon"></i>
+                    <h3>Personal Portfolio</h3>
+                    <p>Interactive portfolio website featuring modern UI design, dark aesthetics, and clear layout sections.</p>
+                    <div class="tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a href="https://github.com/chinmaynagori31-pixel" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-info">
-        <div class="logo" style="margin-bottom: 0.5rem;">AURA<span>MOTORS</span></div>
-        <p>Redefining speed, elegance, and electric luxury.</p>
-      </div>
-      <div class="footer-links">
-        <h5>Navigation</h5>
-        <ul>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#specs">Specifications</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h5>Connect</h5>
-        <ul>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">YouTube</a></li>
-          <li><a href="#">Twitter/X</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 AURA Motors Inc. All rights reserved.
-    </div>
-  </footer>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Get In <span>Touch</span></h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <div class="c-detail"><i class="fas fa-user"></i> Chinmay Nagori</div>
+                <div class="c-detail"><i class="fas fa-map-marker-alt"></i> Chittorgarh, Rajasthan</div>
+                <div class="c-detail"><i class="fab fa-github"></i> chinmaynagori31-pixel</div>
+                <div class="c-detail"><i class="fab fa-linkedin"></i> linkedin.com/in/chinmay-nagori</div>
+            </div>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Chinmay Nagori. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
